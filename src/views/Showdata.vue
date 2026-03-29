@@ -32,17 +32,19 @@
                 <tr>
                   <th>รหัสสินค้า</th>
                   <th>ชื่อสินค้า</th>
-                  <th>จำนวน</th>
+                  <th>จำนวนสินค้า</th>
                   <th>ราคา</th>
+                  
                   
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(item, index) in users" :key="index">
-                  <td>{{ item.ID }}</td>
-                  <td>{{ item.firstlastname}}</td>
-                  <td>{{ item.Department }}</td>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.name}}</td>
+                  <td>{{ item.amount }}</td>
                   <td>{{ item.price }}</td>
+                  
                 </tr>
               </tbody>
             </table>
