@@ -3,7 +3,7 @@
   
       <!-- Header -->
       <div class="text-center mb-4">
-        <h2 class="fw-bold text-primary">📋 ระบบแสดงรายการสินค้าและจำนวน</h2>
+        <h2 class="fw-bold text-primary">ระบบแสดงรายการอุปกรณ์ยืมคืนและจำนวน</h2>
         <p class="text-muted">ข้อมูลจาก n8n Webhook API</p>
       </div>
   
@@ -30,20 +30,22 @@
             <table class="table table-hover align-middle text-center">
               <thead class="table-primary">
                 <tr>
-                  <th>รหัสสินค้า</th>
-                  <th>ชื่อสินค้า</th>
-                  <th>จำนวนสินค้า</th>
-                  <th>ราคา</th>
+                  <th>ชื่อ-นามสกุล</th>
+                  <th>แผนก</th>
+                  <th>อุปกรณ์ที่ยืม</th>
+                  <th>จำนวน</th>
+                  <th>เวลาที่ยืม</th>
                   
                   
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(item, index) in users" :key="index">
-                  <td>{{ item.id }}</td>
-                  <td>{{ item.name}}</td>
+                  <td>{{ item.Fullname }}</td>
+                  <td>{{ item.Department}}</td>
+                  <td>{{ item.Option }}</td>
                   <td>{{ item.amount }}</td>
-                  <td>{{ item.price }}</td>
+                  <td>{{ item.Time }}</td>
                   
                 </tr>
               </tbody>
@@ -70,7 +72,7 @@
   const fetchData = async () => {
     loading.value = true
     try {
-      const response = await fetch('http://localhost:5678/webhook/data')
+      const response = await fetch('http://localhost:5678/webhook/final')
       const data = await response.json()
       users.value = data
     } catch (error) {
